@@ -14,6 +14,9 @@ import io.vertx.micrometer.VertxPrometheusOptions;
 
 public class MyOpenApiServer {
 
+    // Change to false and see that it works fine and using error handler in router
+    private static final boolean USE_ERROR_HANDLER_IN_OPERATION = true;
+
     private static final String METER_REGISTRY_NAME="reproducer";
     private Vertx vertx;
     private HttpServer httpServer;
@@ -46,15 +49,18 @@ public class MyOpenApiServer {
 
                     getUserOperation.handler(GetUserApi::handleRequest);
 
-                    // Set error handler on the Operation
-                    // This causes the route in metrics to be "path>path"
-                    getUserOperation.failureHandler(GetUserApi::handleError);
-
-                    Router router = routerBuilder.createRouter();
-
-                    // set error handler on the router
-                    // When this is set, instead on the Operation, the reported route is as expected: just the path
-//                    router.errorHandler(400, GetUserApi::handleError);
+                    Router router;
+                    if (USE_ERROR_HANDLER_IN_OPERATION) {
+                        // Set error handler on the Operation
+                        // This causes the route in metrics to be "path>path"
+                        getUserOperation.failureHandler(GetUserApi::handleError);
+                        router = routerBuilder.createRouter();
+                    } else {
+                        // set error handler on the router
+                        // When this is set, instead on the Operation, the reported route is as expected: just the path
+                        router = routerBuilder.createRouter();
+                        router.errorHandler(400, GetUserApi::handleError);
+                    }
 
                     // Set metrics endpoint
                     router.get("/metrics")
