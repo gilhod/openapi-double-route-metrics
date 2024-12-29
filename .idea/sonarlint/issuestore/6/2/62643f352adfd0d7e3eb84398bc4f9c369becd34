@@ -1,0 +1,8 @@
+
+€
+java:S1874"=Remove this use of "setMicrometerRegistry"; it is deprecated.(Úõø®8½çèÁ2J$1b9a4bec-7677-43af-b3e0-d48d6d71ab09
+ƒ	java:S1259"<This block of commented-out lines of code should be removed.(´å§ıÿÿÿÿ8Æ±¢’Á2J$9bf1d3f7-828d-4c32-aa04-89a88e4bf7a7
+t
+java:S1602F",Remove useless curly braces around statement(±“‹šûÿÿÿÿ8¿çèÁ2J$4a2332a6-70b3-420f-aec9-11fd0f269fa5
+r	java:S106G"+Replace this use of System.out by a logger.(ü÷öıÿÿÿÿ8ÀçèÁ2J$552a6d04-c5d6-41c7-8e52-49c3812b321b
+r	java:S106J"+Replace this use of System.out by a logger.(Ğ îàúÿÿÿÿ8ÀçèÁ2J$63b47da0-a67b-47d3-9a31-6e81737ed8d6

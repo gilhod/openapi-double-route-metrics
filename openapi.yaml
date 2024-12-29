@@ -1,0 +1,22 @@
+openapi: 3.0.0
+info:
+  title: reproducer
+  version: "1.0"
+paths:
+  /v1/users:
+    get:
+      summary: Get a user
+      tags:
+        - Users
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: id
+          required: true
+      operationId: getUser
+      responses:
+        '202':
+          description: Accepted
+
+
